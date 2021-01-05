@@ -33,16 +33,24 @@ int from(int argc, char **argv) {
 	long int target;
 	int limit;
 	int (*nextDelta)(int);
+	int directionIsSmaller;		// Needed for safety check when looking downwards and hitting negative
+								// numbers, to avoid an infinite loop
 
 	target = strtol(argv[2], NULL, 10);
 
 	if (argc == 5) limit = strtol(argv[4], NULL, 10);
 	else limit = 1;
 
-	if (strcmp(argv[3], "bigger") == 0) nextDelta = &nextDeltaBigger;
-	else if (strcmp(argv[3], "smaller") == 0) nextDelta = &nextDeltaSmaller;
-	else if (strcmp(argv[3], "closer") == 0) nextDelta = &nextDeltaCloser;
-	else {
+	if (strcmp(argv[3], "bigger") == 0) {
+		nextDelta = &nextDeltaBigger;
+		directionIsSmaller = 0;
+	} else if (strcmp(argv[3], "smaller") == 0) {
+		nextDelta = &nextDeltaSmaller;
+		directionIsSmaller = 1;
+	} else if (strcmp(argv[3], "closer") == 0) {
+		nextDelta = &nextDeltaCloser;
+		directionIsSmaller = 0;
+	} else {
 		printf("Error: invalid direction specified\n");
 		return 1;
 	}
@@ -62,6 +70,8 @@ int from(int argc, char **argv) {
 			count++;
 		}
 		delta = (*nextDelta)(delta);
+
+		if (directionIsSmaller && -delta >= target) break;
 	}
 	printf("\n");
 	return 0;
