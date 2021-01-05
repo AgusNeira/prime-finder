@@ -1,8 +1,11 @@
+#ifndef IS_PRIME_H
+#define IS_PRIME_H
+
 #include <math.h>
 
 int isPrime (long int n) {
 	long int number = abs(n);
-	
+
 	if (number <= 2) return 1;
 
 	long int root = ceil(sqrt(number));
@@ -12,3 +15,5 @@ int isPrime (long int n) {
 	}
 	return 1;
 }
+
+#endif

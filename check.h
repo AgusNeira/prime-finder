@@ -1,3 +1,6 @@
+#ifndef CHECK_H
+#define CHECK_H
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -19,3 +22,5 @@ int check(int argc, char **argv) {
 	printf("\n");
 	return 0;
 }
+
+#endif
