@@ -4,6 +4,7 @@
 
 #include "check.h"
 #include "interval.h"
+#include "from.h"
 
 int main(int argc, char **argv) {
 	if (argc < 2) {
@@ -15,6 +16,8 @@ int main(int argc, char **argv) {
 		return check(argc, argv);
 	} else if (strcmp(argv[1], "interval") == 0) {
 		return interval(argc, argv);
+	} else if (strcmp(argv[1], "from") == 0) {
+		return from(argc, argv);
 	}
 	
 	return 0;
