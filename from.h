@@ -13,15 +13,15 @@ enum {
 	CLOSER
 };
 
-inline int nextDeltaSmaller(int currentDelta) {
+int nextDeltaSmaller(int currentDelta) {
 	return currentDelta - 1;
 }
-inline int nextDeltaBigger(int currentDelta) {
+int nextDeltaBigger(int currentDelta) {
 	return currentDelta + 1;
 }
-inline int nextDeltaCloser(int currentDelta) {
+int nextDeltaCloser(int currentDelta) {
 	if (currentDelta > 0) return -currentDelta;
-	else return (-currentDelta) + 1
+	else return (-currentDelta) + 1;
 }
 
 int from(int argc, char **argv) {
@@ -34,7 +34,7 @@ int from(int argc, char **argv) {
 	int limit;
 	int (*nextDelta)(int);
 
-	target = strtol(argv[2], NULL, 10)
+	target = strtol(argv[2], NULL, 10);
 
 	if (argc == 5) limit = strtol(argv[4], NULL, 10);
 	else limit = 1;
