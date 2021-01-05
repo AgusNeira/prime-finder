@@ -26,7 +26,7 @@ int main(int argc, char **argv) {
 
 	if (argc == 1) {
 		printf("Usage:\n");
-		printf("\tprime-finder <number1> [<number2> <number3>...]");
+		printf("\tprime-finder <number1> [<number2> <number3>...]\n");
 	}
 
 	return 0;
