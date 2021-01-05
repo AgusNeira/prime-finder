@@ -3,10 +3,9 @@
 
 #include <math.h>
 
-int isPrime (long int n) {
-	long int number = abs(n);
-
-	if (number <= 2) return 1;
+int isPrime (long int number) {
+	if (number < 2) return 0; 
+	if (number == 2) return 1;
 
 	long int root = ceil(sqrt(number));
 
